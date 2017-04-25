@@ -1,0 +1,16 @@
+Name: John Miller
+Class: CS 375 - 001
+Program 1
+
+This program creates a simple web server able of sending html, txt, jpg and gif files. After creating a socket the server recieves a GET message buffer and parses the message to see what the file being requested is. Then the file is appended to the end of the root directory given by the server and this is used as a file path to be opened. A header response message is then sent back depending on what the file type that was requested, sending the status code, content type and content length. This message is sent and then the file is read into a send buffer. Once the data is in the send buffer that is sent to the browser as well. 
+
+This Program runs on a multilab machine and can be compiled using make. The make file uses gcc to compile all the .c and .h files that are required. 
+
+This program will load any html, txt, jpg and gif file that exists in the proper directory in the server. The header status code sends the proper 200 OK header if the file does exist. One limitation of the program is the program does not send the proper 404 Not Found status code. There is an if statement to check if the file exists and if it does it goes in to create the proper 200 OK header, but if the file doesnt exist it should go into an else statement where the header will be a 404 Not Found, but the program does not go into this else statement. That is the only known limitation of the program. 
+It is ran as:
+
+./myserver <port no> <root directory path>
+
+Then on the browser:
+
+machine_name:port_no/file_name
